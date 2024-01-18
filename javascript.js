@@ -30,9 +30,9 @@ gridButton.addEventListener('click', () => {
         newSize = parseInt(prompt('INVALID NUMBER!\nHow many squares? (MAX: 100)'));
     }
 
-    let temp = parseInt(prompt('Choose a unit size:\n1 - Big\n2 - Medium\n3 - Small\nInsert the correspondent number!'));
+    let temp = parseInt(prompt('Choose the brush thickness:\n1 - Thick\n2 - Medium\n3 - Thin\nInsert the correspondent number!'));
     while(temp < 1 || temp > 3){
-        temp = parseInt(prompt('INVALID NUMBER!\nChoose a unit size:\n1 - Big\n2 - Medium\n3 - Small\nInsert the correspondent number!'));
+        temp = parseInt(prompt('INVALID NUMBER!\nChoose the brush thickness:\n1 - Thick\n2 - Medium\n3 - Thin\nInsert the correspondent number!'));
     }
 
     switch(temp){
