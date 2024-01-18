@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
+    gap: 2rem;
 }
 
 body {
@@ -10,4 +11,5 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #006666;
 }
