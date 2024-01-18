@@ -153,13 +153,17 @@ function createGrid(size){
         let div = document.createElement('div');
     
         div.setAttribute('style',
-         `height: ${size * proportion * (1/proportion)}rem; width: ${1/proportion}rem;`);
+         `height: ${size * proportion * (1/proportion)}rem; width: ${1/proportion}rem; -webkit-user-drag: none; -moz-user-select: -moz-none; 
+         -khtml-user-select: none;
+         -webkit-user-select: none;
+         -o-user-select: none;
+         user-select: none;`);
     
         for(let j = 0; j < size * proportion; j++){
             let square = document.createElement('div');
     
             square.setAttribute('style',
-             `height: ${1/proportion}rem; width: ${1/proportion}rem; background-color: white; ; border-width:0.01rem; user-drag: none; -moz-user-select: -moz-none; 
+             `height: ${1/proportion}rem; width: ${1/proportion}rem; background-color: white; ; border-width:0.01rem; -webkit-user-drag: none; -moz-user-select: -moz-none; 
              -khtml-user-select: none;
              -webkit-user-select: none;
              -o-user-select: none;
