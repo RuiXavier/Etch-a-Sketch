@@ -1,8 +1,10 @@
-const DEFAULT_SIZE = 16;
+const DEFAULT_SIZE = 32;
+const DEFAULT_PROPORTION = 1;
 
 const container = document.querySelector('#container');
 
 let currentSize = DEFAULT_SIZE;
+let proportion = DEFAULT_PROPORTION;
 
 let color = 'red';
 let mode = 'reg';
@@ -28,6 +30,24 @@ gridButton.addEventListener('click', () => {
         newSize = parseInt(prompt('INVALID NUMBER!\nHow many squares? (MAX: 100)'));
     }
 
+    let temp = parseInt(prompt('Choose a unit size:\n1 - Big\n2 - Medium\n3 - Small\nInsert the correspondent number!'));
+    while(temp < 1 || temp > 3){
+        temp = parseInt(prompt('INVALID NUMBER!\nChoose a unit size:\n1 - Big\n2 - Medium\n3 - Small\nInsert the correspondent number!'));
+    }
+
+    switch(temp){
+        case 1:
+            proportion = 0.5;
+            break;
+        case 2:
+            proportion = 1;
+            break;
+        case 3:
+            proportion = 2;
+            break;
+        default:
+            break;
+    }
     currentSize = newSize;
     createGrid(currentSize);
 })
@@ -126,17 +146,17 @@ container.appendChild(gridDiv);
 function createGrid(size){
     gridDiv.innerHTML = '';
 
-    for(let i = 0; i < size; i++){
+    for(let i = 0; i < size * proportion; i++){
         let div = document.createElement('div');
     
         div.setAttribute('style',
-         'height: 16rem; width: 1rem;');
+         `height: ${size * proportion * (1/proportion)}rem; width: ${1/proportion}rem;`);
     
-        for(let j = 0; j < size; j++){
+        for(let j = 0; j < size * proportion; j++){
             let square = document.createElement('div');
     
             square.setAttribute('style',
-             'height: 1rem; width: 1rem; background-color: white; ; border-width:0.01rem; user-drag: none;');
+             `height: ${1/proportion}rem; width: ${1/proportion}rem; background-color: white; ; border-width:0.01rem; user-drag: none;`);
             
             square.addEventListener('mousedown', () => {
                 mousedown = true;
@@ -145,7 +165,6 @@ function createGrid(size){
             square.addEventListener('mouseup', () => {
                 mousedown = false;
             })
-
 
             square.addEventListener('mouseover', () => {
                 if(mousedown === true){
