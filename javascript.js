@@ -6,6 +6,7 @@ let currentSize = DEFAULT_SIZE;
 
 let color = 'red';
 let mode = 'reg';
+let mousedown = false;
 
 let btnDiv = document.createElement('div');
 let gridDiv = document.createElement('div');
@@ -135,17 +136,29 @@ function createGrid(size){
             let square = document.createElement('div');
     
             square.setAttribute('style',
-             'height: 1rem; width: 1rem; background-color: white; border-style: solid; border-color: black; border-width:0.01rem;');
+             'height: 1rem; width: 1rem; background-color: white; ; border-width:0.01rem; user-drag: none;');
             
+            square.addEventListener('mousedown', () => {
+                mousedown = true;
+            })
+
+            square.addEventListener('mouseup', () => {
+                mousedown = false;
+            })
+
+
             square.addEventListener('mouseover', () => {
-                if(mode === 'reg'){
-                    square.style.backgroundColor = color;
-                } else {
-                    let x = Math.floor(Math.random() * 256);
-                    let y = Math.floor(Math.random() * 256);
-                    let z = Math.floor(Math.random() * 256);
-                    let randomColor = "rgb(" + x + "," + y + "," + z + ")";
-                    square.style.backgroundColor = randomColor;
+                if(mousedown === true){
+
+                    if(mode === 'reg'){
+                        square.style.backgroundColor = color;
+                    } else {
+                        let x = Math.floor(Math.random() * 256);
+                        let y = Math.floor(Math.random() * 256);
+                        let z = Math.floor(Math.random() * 256);
+                        let randomColor = "rgb(" + x + "," + y + "," + z + ")";
+                        square.style.backgroundColor = randomColor;
+                    }
                 }
             })
     
