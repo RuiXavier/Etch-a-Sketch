@@ -1,13 +1,16 @@
 const DEFAULT_SIZE = 32;
 const DEFAULT_PROPORTION = 1;
+const DEFAULT_COLOR = 'black';
+const DEFAULT_MODE = 'reg';
+const RAINBOW_MODE = 'rainbow';
 
 const container = document.querySelector('#container');
 
 let currentSize = DEFAULT_SIZE;
 let proportion = DEFAULT_PROPORTION;
 
-let color = 'red';
-let mode = 'reg';
+let color = DEFAULT_COLOR;
+let mode = DEFAULT_MODE;
 let mousedown = false;
 
 let btnDiv = document.createElement('div');
@@ -85,7 +88,7 @@ for(let i = 0; i < colorArray.length; i++){
     colorBtn.setAttribute('style', `height: 2rem; width: 2rem; background-color: ${bgColor};`);
 
     colorBtn.addEventListener('click', () => {
-        mode = 'reg';
+        mode = DEFAULT_MODE;
         regMode.checked = true;
         rainbowMode.checked = false;
         color = bgColor;
@@ -116,20 +119,20 @@ rainbowMode.type = 'checkbox';
 regMode.addEventListener('change', () => {
     if(regMode.checked){
         rainbowMode.checked = false;
-        mode = 'reg';
+        mode = DEFAULT_MODE;
     } else {
         rainbowMode.checked = true;
-        mode = 'rainbow';
+        mode = RAINBOW_MODE;
     }
 })
 
 rainbowMode.addEventListener('change', () => {
     if(rainbowMode.checked){
         regMode.checked = false;
-        mode = 'rainbow';
+        mode = RAINBOW_MODE;
     } else {
         regMode.checked = true;
-        mode = 'reg';
+        mode = DEFAULT_MODE;
     }
 })
 
@@ -169,7 +172,7 @@ function createGrid(size){
             square.addEventListener('mouseover', () => {
                 if(mousedown === true){
 
-                    if(mode === 'reg'){
+                    if(mode === DEFAULT_MODE){
                         square.style.backgroundColor = color;
                     } else {
                         let x = Math.floor(Math.random() * 256);
