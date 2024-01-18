@@ -159,7 +159,11 @@ function createGrid(size){
             let square = document.createElement('div');
     
             square.setAttribute('style',
-             `height: ${1/proportion}rem; width: ${1/proportion}rem; background-color: white; ; border-width:0.01rem; user-drag: none;`);
+             `height: ${1/proportion}rem; width: ${1/proportion}rem; background-color: white; ; border-width:0.01rem; user-drag: none; -moz-user-select: -moz-none; 
+             -khtml-user-select: none;
+             -webkit-user-select: none;
+             -o-user-select: none;
+             user-select: none;`);
             
             square.addEventListener('mousedown', () => {
                 mousedown = true;
